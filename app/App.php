@@ -17,3 +17,22 @@ function getTransactionFiles(string $dirPath): array
 
     return $files;
 }
+
+function getTransaction(string $filename)
+{
+    if (!file_exists($filename)) {
+        trigger_error('File "' . $filename . '" does not exist', E_USER_ERROR);
+    }
+
+    $file = fopen($filename, 'r');
+
+    fgetcsv($file);
+
+    $transactions = [];
+
+    while (($transaction = fgetcsv($file)) !== false) {
+        $transactions[] = $transaction;
+    }
+
+    return $transactions;
+}
