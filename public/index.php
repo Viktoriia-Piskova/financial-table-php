@@ -15,7 +15,7 @@ $files = getTransactionFiles(FILES_PATH);
 $transactions = [];
 
 foreach ($files as $file) {
-    $transactions = array_merge($transactions, getTransaction($file));
+    $transactions = array_merge($transactions, getTransaction($file, 'parseTransaction'));
 }
 
 //echo '<pre>' . var_dump($transactions) . '</pre>';

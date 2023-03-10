@@ -18,7 +18,7 @@ function getTransactionFiles(string $dirPath): array
     return $files;
 }
 
-function getTransaction(string $filename)
+function getTransaction(string $filename, ?callable $transactionHandler = null): array
 {
     if (!file_exists($filename)) {
         trigger_error('File "' . $filename . '" does not exist', E_USER_ERROR);
@@ -31,11 +31,14 @@ function getTransaction(string $filename)
     $transactions = [];
 
     while (($transaction = fgetcsv($file)) !== false) {
-        $transactions[] = parseTransaction($transaction);
+        if ($transactionHandler !== null) {
+            $transactions[] = $transactionHandler($transaction);
+        }
     }
 
     return $transactions;
 }
+
 
 function parseTransaction(array $transactionRecord): array
 {
