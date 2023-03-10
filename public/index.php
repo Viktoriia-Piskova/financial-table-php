@@ -19,7 +19,13 @@ foreach ($files as $file) {
 }
 
 echo '<pre>' . var_dump($transactions) . '</pre>';
+
+
+require VIEWS_PATH . 'transactions.php';
+
+
 ?>
+
 
 
 /* YOUR CODE (Instructions in README.md) */
