@@ -18,7 +18,7 @@ foreach ($files as $file) {
     $transactions = array_merge($transactions, getTransaction($file));
 }
 
-echo '<pre>' . var_dump($transactions) . '</pre>';
+//echo '<pre>' . var_dump($transactions) . '</pre>';
 
 
 require VIEWS_PATH . 'transactions.php';
